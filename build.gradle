@@ -6,6 +6,10 @@ plugins {
 group 'de.dfki.mary'
 version '0.1.0-SNAPSHOT'
 
+compileLexicon {
+    delimiter = '\\|'
+}
+
 task sourceJar(type: Jar) {
     from sourceSets.main.allJava
 }
