@@ -1,5 +1,5 @@
 plugins {
-  id "de.dfki.mary.lexicon-compiler" version "0.1.1"
+  id 'de.dfki.mary.lexicon-compiler' version '0.2.0'
   id 'maven-publish'
 }
 
@@ -10,17 +10,18 @@ compileLexicon {
     delimiter = '\\|'
 }
 
-task sourceJar(type: Jar) {
-    from sourceSets.main.allJava
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(8)
+    }
+    withSourcesJar()
+    withJavadocJar()
 }
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            artifact sourceJar {
-                classifier 'sources'
-            }
         }
     }
     repositories {
