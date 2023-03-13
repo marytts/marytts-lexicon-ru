@@ -10,10 +10,6 @@ compileLexicon {
     delimiter = '\\|'
 }
 
-task sourceJar(type: Jar) {
-    from sourceSets.main.allJava
-}
-
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(8)
@@ -26,9 +22,6 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            artifact sourceJar {
-                classifier 'sources'
-            }
         }
     }
     repositories {
