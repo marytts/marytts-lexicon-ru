@@ -1,10 +1,15 @@
 plugins {
-  id 'de.dfki.mary.lexicon-compiler' version '0.2.0'
-  id 'maven-publish'
+    id 'de.dfki.mary.lexicon-compiler' version '0.2.0'
+    id 'maven-publish'
 }
 
 group 'de.dfki.mary'
 version '0.2.0-SNAPSHOT'
+description 'Russian lexicon for MaryTTS'
+
+ext {
+    url = 'https://github.com/marytts/marytts-lexicon-ru'
+}
 
 compileLexicon {
     delimiter = '\\|'
@@ -22,6 +27,38 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+            pom {
+                name = project.name
+                description = project.description
+                url = project.url
+                licenses {
+                    license {
+                        name = 'GNU Lesser General Public License v3.0 only'
+                        url = 'https://spdx.org/licenses/LGPL-3.0-only.html'
+                    }
+                }
+                developers {
+                    developer {
+                        name = 'Ingmar Steiner'
+                        id = 'psibre'
+                    }
+                    developer {
+                        name = 'Marc Schröder'
+                        id = 'marc1s'
+                    }
+                }
+                contributors {
+                    contributor {
+                        name = 'Nickolay Shmyrev'
+                        url = 'https://github.com/nshmyrev'
+                    }
+                }
+                scm {
+                    connection = "scm:git:${project.url}.git"
+                    developerConnection = "scm:git:ssh://git@github.com:marytts/${project.name}.git"
+                    url = project.url
+                }
+            }
         }
     }
     repositories {
