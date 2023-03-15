@@ -8,11 +8,17 @@ Russian lexicon for MaryTTS
 
 - CI via GitHub Actions
 - Testing on Java 8, 11, 17
+- Artifact hosting on Maven Central
+
+### Removed
+
+- Reliance on Bintray/JCenter
 
 ### Changed
 
 - Build with Gradle v7.5.1
 - Upgraded lexicon compiler plugin to v0.2.0
+- Migrated publishing from Bintray/OJO to OSSRH
 
 [v0.1.0] - 2017-03-01
 ---------------------
